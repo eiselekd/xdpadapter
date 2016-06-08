@@ -4862,6 +4862,10 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <text x="-2.6162" y="1.7018" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-2.667" y="-3.048" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 </package>
+<package name="TESTPAD">
+<smd name="P$1" x="0" y="0" dx="1" dy="1" layer="1"/>
+<text x="0" y="1.27" size="1" layer="51">&gt;Name</text>
+</package>
 </packages>
 <symbols>
 <symbol name="SN74LV4T125">
@@ -4938,6 +4942,10 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
 <text x="-1.778" y="1.905" size="1.778" layer="95">&gt;NAME</text>
 <text x="-1.778" y="-3.429" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="TESTPAD">
+<pin name="TESTPAD" x="0" y="0" length="middle"/>
+<circle x="5.08" y="0" radius="2.54" width="0.4064" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -5203,6 +5211,21 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="TESTPAD">
+<gates>
+<gate name="G$1" symbol="TESTPAD" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TESTPAD">
+<connects>
+<connect gate="G$1" pin="TESTPAD" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -5253,6 +5276,11 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
+<part name="U$1" library="minnowboard" deviceset="TESTPAD" device=""/>
+<part name="A0" library="minnowboard" deviceset="TESTPAD" device=""/>
+<part name="A1" library="minnowboard" deviceset="TESTPAD" device=""/>
+<part name="A2" library="minnowboard" deviceset="TESTPAD" device=""/>
+<part name="A3" library="minnowboard" deviceset="TESTPAD" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5297,6 +5325,11 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <instance part="GND6" gate="1" x="86.36" y="58.42" rot="MR0"/>
 <instance part="GND7" gate="1" x="86.36" y="78.74" rot="MR0"/>
 <instance part="GND1" gate="1" x="-38.1" y="5.08" rot="MR0"/>
+<instance part="U$1" gate="G$1" x="25.4" y="60.96"/>
+<instance part="A0" gate="G$1" x="25.4" y="22.86"/>
+<instance part="A1" gate="G$1" x="25.4" y="20.32"/>
+<instance part="A2" gate="G$1" x="25.4" y="17.78"/>
+<instance part="A3" gate="G$1" x="25.4" y="15.24"/>
 </instances>
 <busses>
 </busses>
@@ -5796,19 +5829,22 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <net name="N$9" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="XDP_H_OBSDATA_A0"/>
-<wire x1="27.94" y1="22.86" x2="20.32" y2="22.86" width="0.1524" layer="91"/>
+<pinref part="A0" gate="G$1" pin="TESTPAD"/>
+<wire x1="25.4" y1="22.86" x2="20.32" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$11" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="XDP_H_OBSDATA_A1"/>
-<wire x1="27.94" y1="20.32" x2="20.32" y2="20.32" width="0.1524" layer="91"/>
+<pinref part="A1" gate="G$1" pin="TESTPAD"/>
+<wire x1="25.4" y1="20.32" x2="20.32" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="XDP_H_OBSDATA_A3"/>
-<wire x1="27.94" y1="15.24" x2="20.32" y2="15.24" width="0.1524" layer="91"/>
+<pinref part="A3" gate="G$1" pin="TESTPAD"/>
+<wire x1="25.4" y1="15.24" x2="20.32" y2="15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -5826,13 +5862,15 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <net name="N$8" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="XDP_H_OBSDATA_A2"/>
-<wire x1="20.32" y1="17.78" x2="27.94" y2="17.78" width="0.4064" layer="91"/>
+<wire x1="20.32" y1="17.78" x2="25.4" y2="17.78" width="0.4064" layer="91"/>
+<pinref part="A2" gate="G$1" pin="TESTPAD"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="RMRST" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="HOOK0"/>
-<wire x1="20.32" y1="60.96" x2="27.94" y2="60.96" width="0.254" layer="91"/>
+<wire x1="20.32" y1="60.96" x2="25.4" y2="60.96" width="0.254" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="TESTPAD"/>
 </segment>
 </net>
 <net name="N$24" class="0">
