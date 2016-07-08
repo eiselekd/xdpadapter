@@ -5244,7 +5244,6 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <part name="U$5" library="XUP_V1_04" deviceset="SUPPLY1_+1V8" device=""/>
 <part name="TMS1.8" library="resistor" deviceset="R-EU_" device="R0805" value="10"/>
 <part name="TCLK1.8" library="resistor" deviceset="R-EU_" device="R0805" value="10"/>
-<part name="DBGREF1.8" library="resistor" deviceset="R-EU_" device="R0805" value="10"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="TCLK" library="resistor" deviceset="R-EU_" device="R0805" value="0"/>
 <part name="TMS" library="resistor" deviceset="R-EU_" device="R0805" value="0"/>
@@ -5293,7 +5292,6 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <instance part="U$5" gate="G$1" x="101.6" y="7.62" rot="MR90"/>
 <instance part="TMS1.8" gate="G$1" x="66.04" y="33.02" rot="MR0"/>
 <instance part="TCLK1.8" gate="G$1" x="66.04" y="22.86" rot="R180"/>
-<instance part="DBGREF1.8" gate="G$1" x="66.04" y="12.7" rot="MR0"/>
 <instance part="GND5" gate="1" x="198.12" y="38.1"/>
 <instance part="TCLK" gate="G$1" x="162.56" y="55.88"/>
 <instance part="TMS" gate="G$1" x="162.56" y="58.42"/>
@@ -5708,7 +5706,6 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 <label x="25.4" y="35.56" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="DBGREF1.8" gate="G$1" pin="2"/>
 <wire x1="60.96" y1="12.7" x2="53.34" y2="12.7" width="0.1524" layer="91"/>
 <label x="53.34" y="12.7" size="1.778" layer="95"/>
 </segment>
@@ -5794,7 +5791,6 @@ diameter 4.8 mm, vertical, grid 12.7 mm</description>
 </net>
 <net name="N$6" class="0">
 <segment>
-<pinref part="DBGREF1.8" gate="G$1" pin="1"/>
 <wire x1="71.12" y1="12.7" x2="76.2" y2="12.7" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="4Y"/>
 <wire x1="76.2" y1="12.7" x2="78.74" y2="12.7" width="0.1524" layer="91"/>
