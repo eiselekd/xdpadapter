@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     }
 
     ftdi_set_interface(&ftdic, INTERFACE_A);
-    f = ftdi_usb_open(&ftdic, 0x0403, 0x6010);
+    f = ftdi_usb_open(&ftdic, 0x0403, 0xbcda /*0x6010*/);
     if (f < 0 && f != -5)
     {
         fprintf(stderr, "unable to open ftdi device: %d (%s)\n", f, ftdi_get_error_string(&ftdic));
