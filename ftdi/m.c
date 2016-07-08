@@ -17,7 +17,7 @@
 
 int main(int argc, char **argv)
 {
-    struct ftdi_context ftdic, ftdic2;
+    struct ftdi_context ftdic;
     char buf[1];
     int f,i;
 
@@ -40,27 +40,9 @@ int main(int argc, char **argv)
     printf("enabling bitbang mode(channel 1)\n");
     ftdi_set_bitmode(&ftdic, 0xFF, BITMODE_BITBANG);
 
-    // Init 2. channel
-    if (ftdi_init(&ftdic2) < 0)
-    {
-        fprintf(stderr, "ftdi_init failed\n");
-        return EXIT_FAILURE;
-    }
-    ftdi_set_interface(&ftdic2, INTERFACE_B);
-    f = ftdi_usb_open(&ftdic2, 0x0403, 0x6010);
-    if (f < 0 && f != -5)
-    {
-        fprintf(stderr, "unable to open ftdi device: %d (%s)\n", f, ftdi_get_error_string(&ftdic2));
-        exit(-1);
-    }
-    printf("ftdi open succeeded(channel 2): %d\n",f);
-
-    printf("enabling bitbang mode (channel 2)\n");
-    ftdi_set_bitmode(&ftdic2, 0xFF, BITMODE_BITBANG);
-
     // Write data
     printf("startloop\n");
-    for (i = 0; i < 23; i++)
+    for (i = 0; i < 3; i++)
     {
         buf[0] =  0x1;
         printf("porta: %02i: 0x%02x \n",i,buf[0]);
@@ -76,19 +58,6 @@ int main(int argc, char **argv)
             fprintf(stderr,"write failed on channel 1 for 0x%x, error %d (%s)\n", buf[0], f, ftdi_get_error_string(&ftdic));
         sleep(1);
 
-        buf[0] =  0x1;
-        printf("portb: %02i: 0x%02x \n",i,buf[0]);
-        f = ftdi_write_data(&ftdic2, buf, 1);
-        if (f < 0)
-            fprintf(stderr,"write failed on channel 2 for 0x%x, error %d (%s)\n", buf[0], f, ftdi_get_error_string(&ftdic2));
-        sleep(1);
-
-        buf[0] =  0x2;
-        printf("portb: %02i: 0x%02x \n",i,buf[0]);
-        f = ftdi_write_data(&ftdic2, buf, 1);
-        if (f < 0)
-            fprintf(stderr,"write failed on channel 2 for 0x%x, error %d (%s)\n", buf[0], f, ftdi_get_error_string(&ftdic2));
-        sleep(1);
     }
     printf("\n");
 
@@ -97,8 +66,4 @@ int main(int argc, char **argv)
     ftdi_usb_close(&ftdic);
     ftdi_deinit(&ftdic);
 
-    printf("disabling bitbang mode(channel 2)\n");
-    ftdi_disable_bitbang(&ftdic2);
-    ftdi_usb_close(&ftdic2);
-    ftdi_deinit(&ftdic2);
 }
