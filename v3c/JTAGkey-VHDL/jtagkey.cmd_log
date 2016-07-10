@@ -1,0 +1,7 @@
+xst -intstyle ise -ifn "/home/eiselekd/git/Bus_Blaster/buffer_logic/JTAGkey-VHDL/jtagkey.xst" -ofn "/home/eiselekd/git/Bus_Blaster/buffer_logic/JTAGkey-VHDL/jtagkey.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc BBv2JTAGKEY.ucf -p xc2c32a-VQ44-6 jtagkey.ngc jtagkey.ngd  
+cpldfit -intstyle ise -p xc2c32a-6-VQ44 -ofmt vhdl -optimize density -htmlrpt -loc on -slew fast -init low -inputs 32 -pterms 28 -unused float -terminate float -iostd LVCMOS18 jtagkey.ngd 
+XSLTProcess jtagkey_build.xml 
+tsim -intstyle ise jtagkey jtagkey.nga 
+taengine -intstyle ise -f jtagkey -w --format html1 -l jtagkey_html/tim/timing_report.htm 
+hprep6 -s IEEE1149 -i jtagkey 

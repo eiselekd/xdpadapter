@@ -1,0 +1,8 @@
+V3 3
+FL /home/eiselekd/git/Bus_Blaster/buffer_logic/JTAGkey-VHDL/jtagkey.vhd 2016/07/08.21:11:33 P.20131013
+EN work/jtagkey 1468138102 \
+      FL /home/eiselekd/git/Bus_Blaster/buffer_logic/JTAGkey-VHDL/jtagkey.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/jtagkey/Behavioral 1468138103 \
+      FL /home/eiselekd/git/Bus_Blaster/buffer_logic/JTAGkey-VHDL/jtagkey.vhd \
+      EN work/jtagkey 1468138102
